@@ -650,6 +650,22 @@ h1, h2, h3, p, dl, dd { margin: 0; }
   border-bottom: 1px solid var(--line);
 }
 .news-archive li:first-child { padding-top: 0; }
+.news-more {
+  margin-top: clamp(28px, 3.5vw, 40px);
+  padding: 14px 24px;
+  background: none;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  transition: background 180ms var(--ease), color 180ms var(--ease);
+}
+.news-more:hover { background: var(--accent); color: var(--paper); }
+.news-more[hidden] { display: none; }
+
 .news-archive__date {
   font-family: var(--font-display);
   font-size: 13px;
