@@ -1,8 +1,9 @@
 /* IPI (THAILAND) CO., LTD. — corporate site
    1. SPメニューの開閉（ハンバーガー → X変形＋全画面メニュー）
-   2. 到達フェードイン（[data-reveal]）
-   3. お問い合わせフォームの送信
-   prefers-reduced-motion 尊重・JS無効でも内容は全て見える */
+   2. お問い合わせフォームの送信
+   3. お知らせのページング（10件＋もっと見る）
+   4. 到達フェードイン（[data-reveal]）
+   prefers-reduced-motion 尊重・JS無効でも内容は全て見える（news-archiveはJS無効時は全件表示） */
 
 /* 外部URLはここに集約する（受け入れ条件#4）。
    ★空のあいだフォームは送信をブロックし、その旨を画面に出す。
@@ -96,7 +97,29 @@ var FORM_ENDPOINT = "";
     }
   }
 
-  /* --- 3. 到達フェードイン --- */
+  /* --- 3. お知らせのページング --- */
+  var newsList = document.querySelector(".news-archive");
+  var newsMore = document.querySelector("[data-news-more]");
+  var PAGE_SIZE = 10;
+
+  if (newsList && newsMore) {
+    var newsItems = Array.prototype.slice.call(newsList.children);
+
+    if (newsItems.length > PAGE_SIZE) {
+      newsItems.slice(PAGE_SIZE).forEach(function (li) { li.hidden = true; });
+      newsMore.hidden = false;
+
+      newsMore.addEventListener("click", function () {
+        var hidden = newsItems.filter(function (li) { return li.hidden; });
+        hidden.slice(0, PAGE_SIZE).forEach(function (li) { li.hidden = false; });
+        if (newsItems.every(function (li) { return !li.hidden; })) {
+          newsMore.hidden = true;
+        }
+      });
+    }
+  }
+
+  /* --- 4. 到達フェードイン --- */
   var targets = Array.prototype.slice.call(document.querySelectorAll("[data-reveal]"));
   if (!targets.length) return;
 
