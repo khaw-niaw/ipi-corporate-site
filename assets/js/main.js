@@ -7,8 +7,11 @@
 
 /* 外部URLはここに集約する（受け入れ条件#4）。
    ★空のあいだフォームは送信をブロックし、その旨を画面に出す。
-     「受け付けました」を偽装しないため。送信先が決まったらここに入れる。 */
-var FORM_ENDPOINT = "";
+     「受け付けました」を偽装しないため。送信先が決まったらここに入れる。
+   ★このフォームは K2 PATTAYA と Formspree のフォームを共用している（無料プランは2フォームまでのため）。
+     どちらのサイトからの送信かは、contact.html の隠しフィールド _subject と site で見分ける。
+     IPI 専用の受信箱が必要になったら、Formspree で新規フォームを作ってここを差し替える。 */
+var FORM_ENDPOINT = "https://formspree.io/f/mreezwen";
 
 (function () {
   "use strict";
@@ -137,4 +140,44 @@ var FORM_ENDPOINT = "";
   }, { rootMargin: "0px 0px -12% 0px", threshold: 0.06 });
 
   targets.forEach(function (el) { io.observe(el); });
+})();
+
+/* --- 5. Cookie同意バナー（Consent Mode v2 と連動） ---
+   同意されるまで analytics_storage は denied のまま。同意時に granted へ更新する。
+   既定値の宣言は各ページの <head>（GTMスニペットの直前）にある。 */
+(function () {
+  "use strict";
+
+  var KEY = "cookie_consent";
+  var saved = null;
+  try { saved = localStorage.getItem(KEY); } catch (e) {}
+  if (saved === "accepted" || saved === "declined") return;
+
+  var plink = document.querySelector('a[href$="privacy.html"]');
+  var phref = plink ? plink.getAttribute("href") : "privacy.html";
+
+  var bar = document.createElement("div");
+  bar.className = "cookiebar";
+  bar.setAttribute("role", "dialog");
+  bar.setAttribute("aria-label", "Cookie の使用について");
+  bar.innerHTML =
+    '<p class="cookiebar__text">本サイトでは、利用状況の分析のために Cookie を使用します。「同意する」を選択されるまで解析は行いません。詳しくは<a href="' + phref + '">プライバシーポリシー</a>をご覧ください。</p>' +
+    '<div class="cookiebar__actions">' +
+      '<button type="button" class="cookiebar__btn" data-cookie="declined">拒否する</button>' +
+      '<button type="button" class="cookiebar__btn cookiebar__btn--accept" data-cookie="accepted">同意する</button>' +
+    '</div>';
+  document.body.appendChild(bar);
+  setTimeout(function () { bar.classList.add("is-visible"); }, 50);
+
+  bar.querySelectorAll("[data-cookie]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var value = btn.getAttribute("data-cookie");
+      try { localStorage.setItem(KEY, value); } catch (e) {}
+      if (value === "accepted" && typeof window.gtag === "function") {
+        window.gtag("consent", "update", { analytics_storage: "granted" });
+      }
+      bar.classList.remove("is-visible");
+      setTimeout(function () { if (bar.parentNode) { bar.parentNode.removeChild(bar); } }, 250);
+    });
+  });
 })();
