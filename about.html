@@ -82,7 +82,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <main class="main">
 
     <!-- 見出し帯 -->
-    <section class="page-head">
+    <!-- 代表挨拶を非表示にしている間は、下の会社概要（灰色の帯）に直接つなぐため下余白を0にする。代表挨拶を戻すときはこの style を外す -->
+    <section class="page-head" style="padding-bottom: 0">
       <div class="ph ph--photo page-head__band" data-arc-reveal>
         <img src="assets/images/stock-pattaya.jpg" alt="本社のあるパタヤの街と海" width="2400" height="833">
         <div class="ph__arc" aria-hidden="true"></div>
