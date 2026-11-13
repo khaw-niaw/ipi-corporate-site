@@ -358,7 +358,7 @@ h1, h2, h3, p, dl, dd { margin: 0; }
 }
 
 /* --- ヒーロー（トップ） --- */
-.hero { position: relative; padding: 0 0 clamp(64px, 9vw, 120px); }
+.hero { position: relative; padding: 0; } /* 2026-11-13 下余白を0に（SCROLL表示の下が空きすぎていたため） */
 .hero__stage { position: relative; padding-left: clamp(0px, 5vw, 96px); }
 .hero__media { aspect-ratio: 4 / 3; }
 .hero__media .ph__arc:nth-of-type(1) { width: 118%; height: 260%; left: -34%; top: 6%; }
