@@ -115,6 +115,9 @@ document.addEventListener("click", function (e) {
         body: new FormData(form)
       }).then(function (res) {
         if (!res.ok) throw new Error("status " + res.status);
+        // GA4：送信成功だけを数える（GTMのカスタムイベント generate_lead → GA4のキーイベント）
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: "generate_lead" });
         form.hidden = true;
         sent.hidden = false;
         sent.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -217,3 +220,16 @@ document.addEventListener("click", function (e) {
     });
   });
 })();
+
+/* --- 6. GA4のクリック計測（2026-11-14）。GTMのカスタムイベントでGA4へ送る ---
+   email_click＝メールリンク（キーイベント）／napoli_site_click＝ナポリの窯公式サイトへのリンク */
+document.addEventListener("click", function (e) {
+  var a = e.target.closest && e.target.closest("a[href]");
+  if (!a) return;
+  var href = a.getAttribute("href");
+  var ev = href.indexOf("mailto:") === 0 ? "email_click"
+    : href.indexOf("napolinokamathailand.com") !== -1 ? "napoli_site_click" : "";
+  if (!ev) return;
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ event: ev, link_url: href });
+});
