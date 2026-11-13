@@ -15,10 +15,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-N5T4MWD6');</script>
 <!-- End Google Tag Manager -->
+<script>
+/* ルート / に来た初回だけ、ブラウザの言語で /en/・/th/ へ振り分ける（手動選択を優先・クローラーは振り分けない）。MENLABOと同じ方式 */
+(function(){try{
+  if (/bot|crawl|spider|slurp|Google-InspectionTool|Lighthouse/i.test(navigator.userAgent)) return;
+  if (location.pathname !== "/" || sessionStorage.getItem("langRedirected")) return;
+  sessionStorage.setItem("langRedirected", "1");
+  var pref = localStorage.getItem("langPref");
+  var lang = (pref || (navigator.languages && navigator.languages[0]) || navigator.language || "").toLowerCase();
+  var target = lang.indexOf("ja") === 0 ? "" : lang.indexOf("th") === 0 ? "th" : "en";
+  if (target) location.replace("/" + target + "/" + location.search + location.hash);
+}catch(e){}})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Home | IPI (THAILAND) CO., LTD.</title>
 <meta name="description" content="日本生まれのピザブランド「ナポリの窯」をタイで運営する IPI (THAILAND) CO., LTD. のコーポレートサイト。2016年設立、直営・フランチャイズあわせてタイ国内5店舗を展開。">
 <link rel="canonical" href="https://www.ipi.co.th/">
+<link rel="alternate" hreflang="ja" href="https://www.ipi.co.th/">
+<link rel="alternate" hreflang="en" href="https://www.ipi.co.th/en/">
+<link rel="alternate" hreflang="th" href="https://www.ipi.co.th/th/">
+<link rel="alternate" hreflang="x-default" href="https://www.ipi.co.th/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="IPI (THAILAND) CO., LTD.">
 <meta property="og:title" content="IPI (THAILAND) CO., LTD.">
@@ -74,9 +90,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a class="gnav__link" href="news.html">News</a>
         <a class="gnav__link" href="contact.html">Contact</a>
         <span class="lang">
-          <span class="lang__item lang__item--current">JA</span>
-          <span class="lang__item">EN</span>
-          <span class="lang__item">TH</span>
+          <a class="lang__item lang__item--current" href="/" hreflang="ja" lang="ja" aria-current="true" data-lang="ja">JA</a>
+          <a class="lang__item" href="/en/" hreflang="en" lang="en" data-lang="en">EN</a>
+          <a class="lang__item" href="/th/" hreflang="th" lang="th" data-lang="th">TH</a>
         </span>
       </nav>
 
@@ -93,9 +109,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="news.html">News</a>
     <a href="contact.html">Contact</a>
     <span class="lang">
-      <span class="lang__item lang__item--current">JA</span>
-      <span class="lang__item">EN</span>
-      <span class="lang__item">TH</span>
+      <a class="lang__item lang__item--current" href="/" hreflang="ja" lang="ja" aria-current="true" data-lang="ja">JA</a>
+      <a class="lang__item" href="/en/" hreflang="en" lang="en" data-lang="en">EN</a>
+      <a class="lang__item" href="/th/" hreflang="th" lang="th" data-lang="th">TH</a>
     </span>
   </div>
 

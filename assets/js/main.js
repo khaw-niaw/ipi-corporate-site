@@ -13,6 +13,42 @@
      IPI 専用の受信箱が必要になったら、Formspree で新規フォームを作ってここを差し替える。 */
 var FORM_ENDPOINT = "https://formspree.io/f/mreezwen";
 
+/* --- 言語別の文言（2026-11-13 多言語化）。日本語が既定 --- */
+var IPI_LANG = (document.documentElement.lang || "ja").slice(0, 2);
+var IPI_T = {
+  en: {
+    cookieLabel: "About cookies",
+    cookieText: 'This site uses cookies to analyse usage. We do not run analytics until you select "Accept". For details, see our ',
+    cookieLink: "Privacy Policy", cookieAfter: ".",
+    decline: "Decline", accept: "Accept",
+    formUnset: "This form cannot be sent yet. Please try again later.",
+    formFail: "Sending failed. Please try again later."
+  },
+  th: {
+    cookieLabel: "เกี่ยวกับการใช้คุกกี้",
+    cookieText: 'เว็บไซต์นี้ใช้คุกกี้เพื่อวิเคราะห์การใช้งาน เราจะไม่วิเคราะห์จนกว่าคุณจะเลือก "ยอมรับ" ดูรายละเอียดได้ที่',
+    cookieLink: "นโยบายความเป็นส่วนตัว", cookieAfter: "",
+    decline: "ปฏิเสธ", accept: "ยอมรับ",
+    formUnset: "ยังไม่สามารถส่งแบบฟอร์มนี้ได้ โปรดลองใหม่ภายหลัง",
+    formFail: "ส่งไม่สำเร็จ โปรดลองใหม่อีกครั้งภายหลัง"
+  },
+  ja: {
+    cookieLabel: "Cookie の使用について",
+    cookieText: "本サイトでは、利用状況の分析のために Cookie を使用します。「同意する」を選択されるまで解析は行いません。詳しくは",
+    cookieLink: "プライバシーポリシー", cookieAfter: "をご覧ください。",
+    decline: "拒否する", accept: "同意する",
+    formUnset: "送信先が未設定のため、現在このフォームは送信できません。お手数ですが公開までお待ちください。",
+    formFail: "送信に失敗しました。時間をおいて再度お試しください。"
+  }
+};
+var IPI_TXT = IPI_T[IPI_LANG] || IPI_T.ja;
+
+/* 言語スイッチで選んだ言語を覚える（トップの自動振り分けより優先） */
+document.addEventListener("click", function (e) {
+  var a = e.target.closest && e.target.closest("[data-lang]");
+  if (a) { try { localStorage.setItem("langPref", a.getAttribute("data-lang")); } catch (err) {} }
+});
+
 (function () {
   "use strict";
 
@@ -67,7 +103,7 @@ var FORM_ENDPOINT = "https://formspree.io/f/mreezwen";
       error.hidden = true;
 
       if (!FORM_ENDPOINT) {
-        showError("送信先が未設定のため、現在このフォームは送信できません。お手数ですが公開までお待ちください。");
+        showError(IPI_TXT.formUnset);
         return;
       }
 
@@ -83,7 +119,7 @@ var FORM_ENDPOINT = "https://formspree.io/f/mreezwen";
         sent.hidden = false;
         sent.scrollIntoView({ behavior: "smooth", block: "center" });
       }).catch(function () {
-        showError("送信に失敗しました。時間をおいて再度お試しください。");
+        showError(IPI_TXT.formFail);
       }).then(function () {
         btn.disabled = false;
       });
@@ -159,12 +195,12 @@ var FORM_ENDPOINT = "https://formspree.io/f/mreezwen";
   var bar = document.createElement("div");
   bar.className = "cookiebar";
   bar.setAttribute("role", "dialog");
-  bar.setAttribute("aria-label", "Cookie の使用について");
+  bar.setAttribute("aria-label", IPI_TXT.cookieLabel);
   bar.innerHTML =
-    '<p class="cookiebar__text">本サイトでは、利用状況の分析のために Cookie を使用します。「同意する」を選択されるまで解析は行いません。詳しくは<a href="' + phref + '">プライバシーポリシー</a>をご覧ください。</p>' +
+    '<p class="cookiebar__text">' + IPI_TXT.cookieText + '<a href="' + phref + '">' + IPI_TXT.cookieLink + '</a>' + IPI_TXT.cookieAfter + '</p>' +
     '<div class="cookiebar__actions">' +
-      '<button type="button" class="cookiebar__btn" data-cookie="declined">拒否する</button>' +
-      '<button type="button" class="cookiebar__btn cookiebar__btn--accept" data-cookie="accepted">同意する</button>' +
+      '<button type="button" class="cookiebar__btn" data-cookie="declined">' + IPI_TXT.decline + '</button>' +
+      '<button type="button" class="cookiebar__btn cookiebar__btn--accept" data-cookie="accepted">' + IPI_TXT.accept + '</button>' +
     '</div>';
   document.body.appendChild(bar);
   setTimeout(function () { bar.classList.add("is-visible"); }, 50);

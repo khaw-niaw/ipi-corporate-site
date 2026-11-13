@@ -1063,3 +1063,19 @@ h1, h2, h3, p, dl, dd { margin: 0; }
 /* 写真の上に文字が乗る帯は、下から紺の膜をかけて読めるようにする */
 .page-head__band.ph--photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(4, 52, 100, 0.78) 0%, rgba(4, 52, 100, 0.25) 60%, rgba(4, 52, 100, 0.10) 100%); }
 .page-head__band.ph--photo .page-head__body { z-index: 1; }
+
+/* --- 多言語（2026-11-13 追加）：日本語版の見た目は変えず、lang でスコープする --- */
+html[lang="en"] body,
+html[lang="th"] body { line-break: auto; overflow-wrap: break-word; }
+html[lang="en"] .t-ja-head,
+html[lang="en"] .t-body { letter-spacing: 0; }
+html[lang="en"] .t-ja-head { line-height: 1.4; }
+html[lang="en"] .t-display { font-family: var(--font-display); letter-spacing: -0.01em; }
+html[lang="th"] { --font-body: "Noto Sans Thai", "Noto Sans JP", sans-serif; }
+html[lang="th"] :is(.t-display, .t-ja-head, .t-body, .t-sub, .ph__label--bl, .page-head__title span, .biz-index__ja, .news-row__cat, .deflist dt, .deflist dd, .history__body, .news-cat a, .news-more, .map-frame__name, .field label, .field input, .field textarea, .form__submit span:first-child, .form__note, .form__error, .form__again, .legal__list, .cta__btn span:first-child, .site-footer__addr, .site-footer__links a, .cookiebar__btn, .map-frame__link, .store-card__type) { letter-spacing: 0; }
+/* 英語版：英字見出しの下の日本語ラベル（訳すと見出しと同じ語になる）は出さない */
+html[lang="en"] :is(.biz-item__ja, .page-head__title span) { display: none; }
+html[lang="th"] .t-display { line-height: 1.35; }
+html[lang="th"] .t-ja-head { line-height: 1.7; }
+html[lang="th"] .t-body { line-height: 2; }
+a.lang__item:hover { color: var(--accent); opacity: 1; }
