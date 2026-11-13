@@ -15,20 +15,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-N5T4MWD6');</script>
 <!-- End Google Tag Manager -->
-<script>
-/* ルート / に来た初回だけ、ブラウザの言語で /en/・/th/ へ振り分ける（手動選択を優先・クローラーは振り分けない）。MENLABOと同じ方式 */
-(function(){try{
-  if (/bot|crawl|spider|slurp|Google-InspectionTool|Lighthouse/i.test(navigator.userAgent)) return;
-  if (location.pathname !== "/" || sessionStorage.getItem("langRedirected")) return;
-  sessionStorage.setItem("langRedirected", "1");
-  var pref = localStorage.getItem("langPref");
-  var lang = (pref || (navigator.languages && navigator.languages[0]) || navigator.language || "").toLowerCase();
-  var target = lang.indexOf("ja") === 0 ? "" : lang.indexOf("th") === 0 ? "th" : "en";
-  if (target) location.replace("/" + target + "/" + location.search + location.hash);
-}catch(e){}})();
-</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Home | IPI (THAILAND) CO., LTD.</title>
+<title>มาสเตอร์แฟรนไชส์ Napoli no Kama ในประเทศไทย | IPI (THAILAND) CO., LTD.</title>
 <meta name="description" content="เว็บไซต์องค์กรของ IPI (THAILAND) CO., LTD. ผู้บริหารแบรนด์พิซซ่าจากญี่ปุ่น Napoli no Kama ในประเทศไทย ก่อตั้งปี 2016 มีสาขาทั้งของบริษัทและแฟรนไชส์รวม 5 สาขาทั่วประเทศไทย">
 <link rel="canonical" href="https://www.ipi.co.th/th">
 <link rel="alternate" hreflang="ja" href="https://www.ipi.co.th/">
@@ -38,7 +26,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:locale" content="th_TH">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="IPI (THAILAND) CO., LTD.">
-<meta property="og:title" content="IPI (THAILAND) CO., LTD.">
+<meta property="og:title" content="มาสเตอร์แฟรนไชส์ Napoli no Kama ในประเทศไทย | IPI (THAILAND) CO., LTD.">
 <meta property="og:description" content="เว็บไซต์องค์กรของ IPI (THAILAND) CO., LTD. ผู้บริหารแบรนด์พิซซ่าจากญี่ปุ่น Napoli no Kama ในประเทศไทย ก่อตั้งปี 2016 มีสาขาทั้งของบริษัทและแฟรนไชส์รวม 5 สาขาทั่วประเทศไทย">
 <meta property="og:url" content="https://www.ipi.co.th/th">
 <meta property="og:image" content="https://www.ipi.co.th/assets/images/store-pattaya.jpg">
