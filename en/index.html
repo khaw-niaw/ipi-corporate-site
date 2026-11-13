@@ -15,26 +15,38 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-N5T4MWD6');</script>
 <!-- End Google Tag Manager -->
+<script>
+/* ルート / に来た初回だけ、ブラウザの言語で /en/・/th/ へ振り分ける（手動選択を優先・クローラーは振り分けない）。MENLABOと同じ方式 */
+(function(){try{
+  if (/bot|crawl|spider|slurp|Google-InspectionTool|Lighthouse/i.test(navigator.userAgent)) return;
+  if (location.pathname !== "/" || sessionStorage.getItem("langRedirected")) return;
+  sessionStorage.setItem("langRedirected", "1");
+  var pref = localStorage.getItem("langPref");
+  var lang = (pref || (navigator.languages && navigator.languages[0]) || navigator.language || "").toLowerCase();
+  var target = lang.indexOf("ja") === 0 ? "" : lang.indexOf("th") === 0 ? "th" : "en";
+  if (target) location.replace("/" + target + "/" + location.search + location.hash);
+}catch(e){}})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Home | IPI (THAILAND) CO., LTD.</title>
 <meta name="description" content="Corporate site of IPI (THAILAND) CO., LTD., operator of the Japanese pizza brand Napoli no Kama in Thailand. Founded in 2016, with 5 company-owned and franchise branches across Thailand.">
-<link rel="canonical" href="https://www.ipi.co.th/en/">
+<link rel="canonical" href="https://www.ipi.co.th/en">
 <link rel="alternate" hreflang="ja" href="https://www.ipi.co.th/">
-<link rel="alternate" hreflang="en" href="https://www.ipi.co.th/en/">
-<link rel="alternate" hreflang="th" href="https://www.ipi.co.th/th/">
+<link rel="alternate" hreflang="en" href="https://www.ipi.co.th/en">
+<link rel="alternate" hreflang="th" href="https://www.ipi.co.th/th">
 <link rel="alternate" hreflang="x-default" href="https://www.ipi.co.th/">
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="IPI (THAILAND) CO., LTD.">
 <meta property="og:title" content="IPI (THAILAND) CO., LTD.">
 <meta property="og:description" content="Corporate site of IPI (THAILAND) CO., LTD., operator of the Japanese pizza brand Napoli no Kama in Thailand. Founded in 2016, with 5 company-owned and franchise branches across Thailand.">
-<meta property="og:url" content="https://www.ipi.co.th/en/">
+<meta property="og:url" content="https://www.ipi.co.th/en">
 <meta property="og:image" content="https://www.ipi.co.th/assets/images/store-pattaya.jpg">
-<link rel="icon" href="../assets/images/logo-high.png">
+<link rel="icon" href="/assets/images/logo-high.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/style.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -67,21 +79,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <header class="site-header">
     <div class="site-header__inner">
-      <a class="brand" href="index.html">
+      <a class="brand" href="/en">
         <span class="brand__mark">IPI</span>
         <span class="brand__name">(THAILAND) CO., LTD.</span>
       </a>
 
       <nav class="gnav" aria-label="Global navigation">
-        <a class="gnav__link" href="index.html" aria-current="page">Home</a>
-        <a class="gnav__link" href="about.html">About</a>
-        <a class="gnav__link" href="business.html">Business</a>
-        <a class="gnav__link" href="news.html">News</a>
-        <a class="gnav__link" href="contact.html">Contact</a>
+        <a class="gnav__link" href="/en" aria-current="page">Home</a>
+        <a class="gnav__link" href="/en/about">About</a>
+        <a class="gnav__link" href="/en/business">Business</a>
+        <a class="gnav__link" href="/en/news">News</a>
+        <a class="gnav__link" href="/en/contact">Contact</a>
         <span class="lang">
           <a class="lang__item" href="/" hreflang="ja" lang="ja" data-lang="ja">JA</a>
-          <a class="lang__item lang__item--current" href="/en/" hreflang="en" lang="en" aria-current="true" data-lang="en">EN</a>
-          <a class="lang__item" href="/th/" hreflang="th" lang="th" data-lang="th">TH</a>
+          <a class="lang__item lang__item--current" href="/en" hreflang="en" lang="en" aria-current="true" data-lang="en">EN</a>
+          <a class="lang__item" href="/th" hreflang="th" lang="th" data-lang="th">TH</a>
         </span>
       </nav>
 
@@ -92,15 +104,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </header>
 
   <div class="spmenu" id="spmenu" data-spmenu aria-hidden="true">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="business.html">Business</a>
-    <a href="news.html">News</a>
-    <a href="contact.html">Contact</a>
+    <a href="/en">Home</a>
+    <a href="/en/about">About</a>
+    <a href="/en/business">Business</a>
+    <a href="/en/news">News</a>
+    <a href="/en/contact">Contact</a>
     <span class="lang">
       <a class="lang__item" href="/" hreflang="ja" lang="ja" data-lang="ja">JA</a>
-      <a class="lang__item lang__item--current" href="/en/" hreflang="en" lang="en" aria-current="true" data-lang="en">EN</a>
-      <a class="lang__item" href="/th/" hreflang="th" lang="th" data-lang="th">TH</a>
+      <a class="lang__item lang__item--current" href="/en" hreflang="en" lang="en" aria-current="true" data-lang="en">EN</a>
+      <a class="lang__item" href="/th" hreflang="th" lang="th" data-lang="th">TH</a>
     </span>
   </div>
 
@@ -110,7 +122,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <section class="hero">
       <div class="hero__stage">
         <div class="ph ph--photo hero__media" data-arc-reveal>
-          <img src="../assets/images/stock-oven.jpg" alt="A freshly baked pizza being taken out of the oven" width="2000" height="1333" fetchpriority="high">
+          <img src="/assets/images/stock-oven.jpg" alt="A freshly baked pizza being taken out of the oven" width="2000" height="1333" fetchpriority="high">
           <div class="ph__arc" aria-hidden="true"></div>
           <div class="ph__arc ph__arc--faint" aria-hidden="true"></div>
         </div>
@@ -139,7 +151,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p class="t-body">In the restaurant business, staying open is harder than opening. We have been entrusted with the Napoli no Kama brand in Thailand and have kept our doors open for 10 years.</p>
             <p class="t-body">Rather than rapid expansion, we focus on baking and serving today's pizza properly. We believe that only this steady work earns the trust of our customers and of the owners who entrust us with their branches.</p>
           </div>
-          <a class="more" href="about.html" style="margin-top: clamp(32px, 4vw, 56px)">
+          <a class="more" href="/en/about" style="margin-top: clamp(32px, 4vw, 56px)">
             <span class="more__label">MORE</span>
             <span class="arc-line arc-line--sm" aria-hidden="true"></span>
           </a>
@@ -176,11 +188,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                   <h3 class="t-en-head">Franchise</h3>
                   <p class="t-sub biz-item__ja">Franchising</p>
                   <p class="t-body l-text">Four franchise branches in Sriracha, On Nut, Thonglor and Rangsit. As headquarters, we support each one from opening through daily operation.</p>
-                  <p class="t-body l-text" style="margin-top: 12px"><a class="text-link" href="business.html#stores">View all branches</a>　<a class="text-link" href="https://www.napolinokamathailand.com/en/" target="_blank" rel="noopener">Napoli no Kama Thailand official site</a></p>
+                  <p class="t-body l-text" style="margin-top: 12px"><a class="text-link" href="/en/business#stores">View all branches</a>　<a class="text-link" href="https://www.napolinokamathailand.com/en/" target="_blank" rel="noopener">Napoli no Kama Thailand official site</a></p>
                 </div>
               </div>
             </div>
-            <a class="more" href="business.html" style="margin-top: clamp(40px, 5vw, 64px)">
+            <a class="more" href="/en/business" style="margin-top: clamp(40px, 5vw, 64px)">
               <span class="more__label">VIEW ALL</span>
               <span class="arc-line" aria-hidden="true"></span>
             </a>
@@ -211,7 +223,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <p class="t-body">We joined the K2 Pattaya Co., Ltd. group</p>
             </div>
           </div>
-          <a class="more" href="news.html" style="margin-top: clamp(36px, 4vw, 56px)">
+          <a class="more" href="/en/news" style="margin-top: clamp(36px, 4vw, 56px)">
             <span class="more__label">VIEW ALL</span>
             <span class="arc-line" aria-hidden="true"></span>
           </a>
@@ -227,7 +239,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <h2 class="t-en-head cta__title">CONTACT</h2>
           <p class="t-body l-text cta__lead">We welcome enquiries about new branches, property and business partnerships.</p>
         </div>
-        <a class="cta__btn" href="contact.html">
+        <a class="cta__btn" href="/en/contact">
           <span>Contact us</span>
           <span aria-hidden="true">→</span>
         </a>
@@ -244,13 +256,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="site-footer__links">
         <a href="https://www.napolinokamathailand.com/en/" target="_blank" rel="noopener">Napoli no Kama Thailand official site</a>
-        <a href="privacy.html">Privacy Policy</a>
+        <a href="/en/privacy">Privacy Policy</a>
         <span class="site-footer__copy">© IPI (THAILAND) CO., LTD.</span>
       </div>
     </div>
   </footer>
 
 </div>
-<script src="../assets/js/main.js"></script>
+<script src="/assets/js/main.js"></script>
 </body>
 </html>

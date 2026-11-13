@@ -189,7 +189,7 @@ document.addEventListener("click", function (e) {
   try { saved = localStorage.getItem(KEY); } catch (e) {}
   if (saved === "accepted" || saved === "declined") return;
 
-  var plink = document.querySelector('a[href$="privacy.html"]');
+  var plink = document.querySelector('a[href$="privacy.html"], a[href$="/privacy"]');
   var phref = plink ? plink.getAttribute("href") : "privacy.html";
 
   var bar = document.createElement("div");
