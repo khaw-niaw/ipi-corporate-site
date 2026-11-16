@@ -112,7 +112,9 @@ document.addEventListener("click", function (e) {
 
       fetch(FORM_ENDPOINT, {
         method: "POST",
-        body: new FormData(form)
+        body: new FormData(form),
+        // Formspreeはこの指定が無いとお礼ページへリダイレクトし、fetchが失敗扱いになる（2026-11-16に発生）
+        headers: { Accept: "application/json" }
       }).then(function (res) {
         if (!res.ok) throw new Error("status " + res.status);
         // GA4：送信成功だけを数える（GTMのカスタムイベント generate_lead → GA4のキーイベント）
