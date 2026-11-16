@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.ipi.co.th/</loc><priority>1.0</priority></url>
-  <url><loc>https://www.ipi.co.th/about</loc><priority>0.8</priority></url>
-  <url><loc>https://www.ipi.co.th/business</loc><priority>0.8</priority></url>
-  <url><loc>https://www.ipi.co.th/news</loc><priority>0.6</priority></url>
-  <url><loc>https://www.ipi.co.th/contact</loc><priority>0.6</priority></url>
-  <url><loc>https://www.ipi.co.th/en</loc><priority>1.0</priority></url>
-  <url><loc>https://www.ipi.co.th/en/about</loc><priority>0.8</priority></url>
-  <url><loc>https://www.ipi.co.th/en/business</loc><priority>0.8</priority></url>
-  <url><loc>https://www.ipi.co.th/en/news</loc><priority>0.6</priority></url>
-  <url><loc>https://www.ipi.co.th/en/contact</loc><priority>0.6</priority></url>
-  <url><loc>https://www.ipi.co.th/th</loc><priority>1.0</priority></url>
-  <url><loc>https://www.ipi.co.th/th/about</loc><priority>0.8</priority></url>
-  <url><loc>https://www.ipi.co.th/th/business</loc><priority>0.8</priority></url>
-  <url><loc>https://www.ipi.co.th/th/news</loc><priority>0.6</priority></url>
-  <url><loc>https://www.ipi.co.th/th/contact</loc><priority>0.6</priority></url>
+  <url><loc>https://www.ipi.co.th/</loc><lastmod>2026-11-16</lastmod><priority>1.0</priority></url>
+  <url><loc>https://www.ipi.co.th/about</loc><lastmod>2026-11-16</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.ipi.co.th/business</loc><lastmod>2026-11-13</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.ipi.co.th/news</loc><lastmod>2026-11-16</lastmod><priority>0.6</priority></url>
+  <url><loc>https://www.ipi.co.th/contact</loc><lastmod>2026-11-16</lastmod><priority>0.6</priority></url>
+  <url><loc>https://www.ipi.co.th/en</loc><lastmod>2026-11-16</lastmod><priority>1.0</priority></url>
+  <url><loc>https://www.ipi.co.th/en/about</loc><lastmod>2026-11-16</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.ipi.co.th/en/business</loc><lastmod>2026-11-13</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.ipi.co.th/en/news</loc><lastmod>2026-11-16</lastmod><priority>0.6</priority></url>
+  <url><loc>https://www.ipi.co.th/en/contact</loc><lastmod>2026-11-16</lastmod><priority>0.6</priority></url>
+  <url><loc>https://www.ipi.co.th/th</loc><lastmod>2026-11-16</lastmod><priority>1.0</priority></url>
+  <url><loc>https://www.ipi.co.th/th/about</loc><lastmod>2026-11-16</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.ipi.co.th/th/business</loc><lastmod>2026-11-13</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.ipi.co.th/th/news</loc><lastmod>2026-11-16</lastmod><priority>0.6</priority></url>
+  <url><loc>https://www.ipi.co.th/th/contact</loc><lastmod>2026-11-16</lastmod><priority>0.6</priority></url>
 </urlset>
